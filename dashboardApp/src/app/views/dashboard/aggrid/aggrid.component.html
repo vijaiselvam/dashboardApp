@@ -1,0 +1,17 @@
+<ag-grid-angular
+    #agGrid
+    style="width: 70%; height: 400px;"
+    id="myGrid"
+    class="ag-theme-alpine"
+    [modules]="modules"
+    [masterDetail]="true"
+    [detailCellRenderer]="detailCellRenderer"
+    [frameworkComponents]="frameworkComponents"
+    [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef"
+    [rowData]="rowData"
+    (gridReady)="onGridReady($event)"
+    (rowClicked)="onRowClicked($event)"
+    (rowGroupOpened)="onRowGroupOpened($event)"
+    [getRowHeight]="getRowHeight">
+  </ag-grid-angular>
