@@ -1,2 +1,9 @@
-<button routerLink="/dashboard">Dashboard</button>
-<router-outlet></router-outlet>
+
+<div class="nav-bar">
+    <button type="button" class="btn btn-secondary" routerLink="/dashboard">Dashboard</button>
+    <button type="button" class="btn btn-secondary list-view" routerLink="/listview">List View</button>
+    <div class="app-name">Demo Application</div>
+</div>
+<div class="body-container">
+    <router-outlet></router-outlet>
+</div>

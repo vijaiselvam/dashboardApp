@@ -1,0 +1,27 @@
+
+<div class="container">
+    <div class="header">
+        <div class="back-button">
+            <img src="../../../assets/back-button.svg" width="32" height="32" (click)="goback()" />
+        </div>
+        <div class="list-view">List View</div>
+    </div>
+    
+    <mat-accordion>
+        <mat-expansion-panel *ngFor="let item of items" (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+                <div class="color"></div>
+                <div>{{item.name.first}} {{item.name.last}}</div>
+              
+            </mat-panel-title>
+            <mat-panel-description>
+              {{item.greeting}}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>{{item.about}}</p>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
+

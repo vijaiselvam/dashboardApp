@@ -34,6 +34,7 @@ export class AggridComponent {
       {
         field: 'athlete',
         minWidth: 150,
+        pinned: 'left'
       },
       {
         field: 'age',
@@ -44,11 +45,22 @@ export class AggridComponent {
         minWidth: 150,
       },
       {
+        field: 'date',
+        filter: 'agDateColumnFilter',
+        filterParams: dateFilterParams,
+      },
+      {
+        field: 'gold',
+      },
+      {
+        field: 'sport'
+      },
+      {
         field: 'year',
         maxWidth: 90,
       }
     ];
-    this.defaultColDef = { flex: 1 };
+    this.defaultColDef = { flex: 1, sortable: true };
   }
 
   onRowClicked(params) { params.node.setExpanded(!params.node.expanded) }
@@ -91,4 +103,41 @@ export class AggridComponent {
     }
   };
 
+  externalFilterChanged(newValue) {
+    dateRange = newValue;
+    this.gridApi.onFilterChanged();
+  }
+
+  isExternalFilterPresent() {
+    return dateRange !== 'everyone';
+  }
+
+  doesExternalFilterPass(node) {
+    if(dateRange !== 'everyone') {
+      return asDate(node.data.date) > dateRange.start && asDate(node.data.date) <= dateRange.end;
+    } else {
+      return true;
+    }
+  }
+
+}
+
+var dateFilterParams = {
+  comparator: function (filterLocalDateAtMidnight, cellValue) {
+    var cellDate = asDate(cellValue);
+    if (filterLocalDateAtMidnight.getTime() === cellDate.getTime()) {
+      return 0;
+    }
+    if (cellDate < filterLocalDateAtMidnight) {
+      return -1;
+    }
+    if (cellDate > filterLocalDateAtMidnight) {
+      return 1;
+    }
+  },
+};
+var dateRange : any = 'everyone';
+function asDate(dateAsString) {
+  var splitFields = dateAsString.split('/');
+  return new Date(splitFields[2], splitFields[1], splitFields[0]);
 }

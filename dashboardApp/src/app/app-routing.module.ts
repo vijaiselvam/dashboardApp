@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   {
+    path: 'listview',
+    loadChildren: () => import('./views/list-view/list-view.module').then(m => m.ListViewModule)
+  },
+  {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full'
