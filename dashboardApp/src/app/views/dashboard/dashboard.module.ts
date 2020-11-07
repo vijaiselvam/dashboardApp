@@ -4,8 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AgGridModule } from '@ag-grid-community/angular';
 import { FullCalendarModule } from '@fullcalendar/angular';
-import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
-import interactionPlugin from '@fullcalendar/interaction'; // a plugin
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import listPlugin from '@fullcalendar/list';
 import { DashboardComponent } from './dashboard.component';
 import { FullCalendarComponent } from './full-calendar/full-calendar.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
@@ -18,6 +20,8 @@ import { MatInputModule } from '@angular/material/input';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
+  timeGridPlugin,
+  listPlugin,
   interactionPlugin
 ]);
 

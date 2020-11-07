@@ -53,9 +53,17 @@ export class DetailCellRendererComponent implements OnInit {
   }
 
   getDatas() {
-    const id = Math.floor(Math.random() * 10);
-    this.randomId = id;
-    this.http
+    this.randomId = Math.floor(Math.random() * 10);
+    this.isApiLoaded = true;
+    if(this.randomId < 3) {
+      this.loremData = this.lorem1;
+    } else if (this.randomId < 6) {
+      this.loremData = this.lorem2;
+    } else {
+      this.loremData = this.lorem3;
+    }
+
+    /* this.http
       .get(`https://jsonplaceholder.typicode.com/posts/${id}`)
       .subscribe(data => {
         this.isApiLoaded = true;
@@ -73,7 +81,7 @@ export class DetailCellRendererComponent implements OnInit {
         this.isApiLoaded = true;
       }, () => {
 
-      });
+      }); */
   }
 
 }

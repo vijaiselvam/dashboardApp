@@ -5,12 +5,17 @@
     font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
     font-size: 14px;
     background-color: white;
+    border-radius: 10px;
   }
   .calendar-app-main {
     flex-grow: 1;
+    margin: 10px;
   }
   
-  .fc { /* the calendar root */
+  .fc {
     margin: 0 auto;
+  }
+  .fc .fc-toolbar-title {
+    font-weight: 200 !important;
   }
   
